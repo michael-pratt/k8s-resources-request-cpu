@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cputest
+  labels:
+    app: cputest
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cputest
+  template:
+    metadata:
+      labels:
+        app: cputest
+    spec:
+      containers:
+      - name: cputest
+        image: cputest:latest
+        imagePullPolicy: Never
+        resources:
+          requests:
+            cpu: 1000m
+#          limits:
+#            cpu: 1000m
